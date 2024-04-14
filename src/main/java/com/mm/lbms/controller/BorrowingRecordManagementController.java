@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @CrossOrigin("*")
-@RequestMapping("/api/patrons")
-public class PatronsManagementController {
+@RequestMapping("/api/borrow")
+public class BorrowingRecordManagementController {
 
 }
