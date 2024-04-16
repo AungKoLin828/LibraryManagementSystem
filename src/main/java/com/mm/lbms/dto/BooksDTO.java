@@ -13,7 +13,7 @@ public class BooksDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Long bookId;
+	private Long id;
 
 	private String title;
 
@@ -22,13 +22,15 @@ public class BooksDTO implements Serializable {
 	private LocalDate publicationYear;
 
 	private String isbn;
+	
+	private boolean isBorrowed;
 
-	public Long getBookId() {
-		return bookId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -61,6 +63,14 @@ public class BooksDTO implements Serializable {
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+
+	public boolean isBorrowed() {
+		return isBorrowed;
+	}
+
+	public void setBorrowed(boolean isBorrowed) {
+		this.isBorrowed = isBorrowed;
 	}
 
 }

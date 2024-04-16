@@ -12,7 +12,7 @@ public class PatronsDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Long patronId;
+	private Long id;
 
 	private String name;
 
@@ -22,12 +22,12 @@ public class PatronsDTO implements Serializable {
 
 	private String address;
 
-	public Long getPatronId() {
-		return patronId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPatronId(Long patronId) {
-		this.patronId = patronId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

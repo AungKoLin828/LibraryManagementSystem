@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mm.lbms.domain.Books;
 import com.mm.lbms.dto.BooksDTO;
@@ -39,12 +40,14 @@ public class BookManagementServiceImpl implements BooksManagementService{
 		// Mapping DTO to entity
 		Books book =  bookMapper.toEntity(bookDto);
 		// Saving entity
+		book.setBorrowed(false);
 		book = bookRepo.save(book);
 		// Mapping saved entity back to DTO
 		return bookMapper.toDto(book);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<BooksDTO> findAll() {
 		// TODO Auto-generated method stub	
 		log.info("Request to find the all Books");
@@ -67,7 +70,7 @@ public class BookManagementServiceImpl implements BooksManagementService{
 		// TODO Auto-generated method stub
 		log.info("Request to update the Books by id : {}", bookDto);
 		// Partial update of book by id
-		return bookRepo.findById(bookDto.getBookId())
+		return bookRepo.findById(bookDto.getId())
 				.map(exctBook -> {
 					// Mapping DTO properties to existing entity					
 					if(bookDto.getAuthor() != null) {

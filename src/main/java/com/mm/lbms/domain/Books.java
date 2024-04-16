@@ -24,7 +24,7 @@ public class Books implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equenceGenerator")
 	@Column(name ="book_id")
-	private Long bookId;
+	private Long id;
 
 	private String title;
 
@@ -34,15 +34,17 @@ public class Books implements Serializable {
 
 	private String isbn;
 	
+	private boolean isBorrowed;
+	
 	@OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
 	private List<BorrowingRecord> borrowingRecord;
 	
-	public Long getBookId() {
-		return bookId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -87,6 +89,14 @@ public class Books implements Serializable {
 
 	public void setBorrowingRecord(List<BorrowingRecord> borrowingRecord) {
 		this.borrowingRecord = borrowingRecord;
+	}
+
+	public boolean isBorrowed() {
+		return isBorrowed;
+	}
+
+	public void setBorrowed(boolean isBorrowed) {
+		this.isBorrowed = isBorrowed;
 	}
 
 }

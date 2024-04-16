@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.mm.lbms.domain.Patrons;
 import com.mm.lbms.dto.PatronsDTO;
 import com.mm.lbms.mapper.PatronsMapper;
@@ -44,6 +46,7 @@ public class PatronsManagementServiceImpl implements PatronsManagementService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<PatronsDTO> findAll() {
 		// TODO Auto-generated method stub
 		log.info("Request to find the all Patrons");
@@ -65,7 +68,7 @@ public class PatronsManagementServiceImpl implements PatronsManagementService{
 		// TODO Auto-generated method stub
 		log.info("Request to find the Patrons by id : {}", patronsDto);
 		// Partial update of Patrons by id
-		return patronsRepo.findById(patronsDto.getPatronId())
+		return patronsRepo.findById(patronsDto.getId())
 				.map(exctPatron -> {
 					// Mapping DTO properties to existing entity
 					if(patronsDto.getName() != null) {

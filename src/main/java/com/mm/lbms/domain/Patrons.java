@@ -23,7 +23,7 @@ public class Patrons implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equenceGenerator")
 	@Column(name ="patrons_id")
-	private Long patronId;
+	private Long id;
 
 	private String name;
 	
@@ -36,12 +36,12 @@ public class Patrons implements Serializable {
 	@OneToMany(mappedBy = "patrons",cascade = CascadeType.ALL)
 	private List<BorrowingRecord> borrowingRecord;
 
-	public Long getPatronId() {
-		return patronId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPatronId(Long patronId) {
-		this.patronId = patronId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

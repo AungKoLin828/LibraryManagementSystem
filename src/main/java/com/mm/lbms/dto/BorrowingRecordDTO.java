@@ -4,6 +4,7 @@
 **************************/
 package com.mm.lbms.dto;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import com.mm.lbms.domain.Books;
 import com.mm.lbms.domain.Patrons;
@@ -20,6 +21,10 @@ public class BorrowingRecordDTO implements Serializable{
 	private Patrons patron;
 	
 	private Books books;
+	
+	private LocalDate borrowDate;
+
+	private LocalDate returnDate; 
 
 	public Long getBwId() {
 		return bwId;
@@ -47,6 +52,22 @@ public class BorrowingRecordDTO implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public LocalDate getBorrowDate() {
+		return borrowDate;
+	}
+
+	public void setBorrowDate(LocalDate borrowDate) {
+		this.borrowDate = borrowDate;
+	}
+
+	public LocalDate getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(LocalDate returnDate) {
+		this.returnDate = returnDate;
 	}
 
 }
