@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.mm.lbms.dto.PatronsDTO;
+import com.mm.lbms.exception.InvalidRequestException;
 import com.mm.lbms.services.PatronsManagementService;
 
 @RestController
@@ -48,6 +49,9 @@ public class PatronsManagementController {
 	@GetMapping("/{id}")
 	public Optional<PatronsDTO> findByPatronsId(@PathVariable("id") Long id){
 		log.info("Request to find the Patrons by Id : {}", id);
+		if(id == null || id <= 0 ) {
+			throw new InvalidRequestException("Invalid bookId or patronId provided.");
+		}
 		return patronsManagementService.findOne(id);
 	}
 	
@@ -60,6 +64,11 @@ public class PatronsManagementController {
 	@DeleteMapping("/{id}")
 	public void deletePatrons(@PathVariable("id") Long id) {
 		log.info("Request to delete the Patrons : {}", id);
+		
+		if(id == null || id <= 0 ) {
+			throw new InvalidRequestException("Invalid bookId or patronId provided.");
+		}
+		
 		patronsManagementService.deletePatrons(id);
 	}
 

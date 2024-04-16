@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mm.lbms.dto.BooksDTO;
+import com.mm.lbms.exception.InvalidRequestException;
 import com.mm.lbms.services.BooksManagementService;
 
 @RestController
@@ -49,6 +51,11 @@ public class BooksManagementController {
 	@GetMapping("/{id}")
 	public Optional<BooksDTO> findByBookId(@PathVariable("id") Long id){
 		log.info("Request to find the Books by id : {}", id);
+		
+		if(id == null || id <= 0) {
+		  throw new  InvalidRequestException("Invalid Request");
+		}
+		
 		return bookManagementService.findOne(id);
 	}
 	
@@ -61,6 +68,11 @@ public class BooksManagementController {
 	@DeleteMapping("/{id}")
 	public void deleteBook(@PathVariable("id") Long id) {
 		log.info("Request to delete the Books : {}", id);
+		
+		if(id == null || id <= 0) {
+		  throw new  InvalidRequestException("Invalid Request");
+		}
+		
 		bookManagementService.deleteBook(id);
 	}
 

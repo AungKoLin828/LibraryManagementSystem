@@ -5,7 +5,6 @@
 package com.mm.lbms.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
-
 public class BooksDTO implements Serializable {
 
 	/**
@@ -14,7 +13,7 @@ public class BooksDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-
+	
 	private String title;
 
 	private String author;
