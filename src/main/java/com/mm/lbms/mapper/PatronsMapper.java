@@ -1,14 +1,15 @@
 /**************************
 *Author Name   : Aung Ko Lin
-*Creation Date : 2024-04-14
+*Creation Date : 2024-04-15
 **************************/
 package com.mm.lbms.mapper;
+
 import org.mapstruct.Mapper;
 
-import com.mm.lbms.domain.Books;
-import com.mm.lbms.dto.BooksDTO;
+import com.mm.lbms.domain.Patrons;
+import com.mm.lbms.dto.PatronsDTO;
 
 @Mapper(componentModel = "spring", uses = {})
-public interface BooksMapper extends EntityMapper<BooksDTO, Books>{
-	
+public interface PatronsMapper extends EntityMapper<PatronsDTO, Patrons>{
+
 }

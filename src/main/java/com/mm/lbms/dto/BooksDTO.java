@@ -1,35 +1,34 @@
-package com.mm.lbms.dto;
-
 /**************************
 *Author Name   : Aung Ko Lin
 *Creation Date : 2024-04-13
 **************************/
-
+package com.mm.lbms.dto;
 import java.io.Serializable;
+import java.time.LocalDate;
 
-public class BookDTO implements Serializable {
+public class BooksDTO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Long Id;
+	private Long bookId;
 
 	private String title;
 
 	private String author;
 
-	private int publicationYear;
+	private LocalDate publicationYear;
 
 	private String isbn;
 
-	public Long getId() {
-		return Id;
+	public Long getBookId() {
+		return bookId;
 	}
 
-	public void setId(Long id) {
-		Id = id;
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
 	}
 
 	public String getTitle() {
@@ -48,11 +47,11 @@ public class BookDTO implements Serializable {
 		this.author = author;
 	}
 
-	public int getPublicationYear() {
+	public LocalDate getPublicationYear() {
 		return publicationYear;
 	}
 
-	public void setPublicationYear(int publicationYear) {
+	public void setPublicationYear(LocalDate publicationYear) {
 		this.publicationYear = publicationYear;
 	}
 

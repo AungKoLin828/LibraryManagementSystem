@@ -5,7 +5,9 @@
 package com.mm.lbms.controller;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.stereotype.Controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,43 +16,51 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.mm.lbms.dto.BookDTO;
-import com.mm.lbms.services.BookManagementService;
+import com.mm.lbms.dto.BooksDTO;
+import com.mm.lbms.services.BooksManagementService;
 
-@Controller
-@CrossOrigin("*")
+@RestController
 @RequestMapping("/api/books")
-public class BookManagementController {
+@CrossOrigin("*")
+public class BooksManagementController {
 	
-	private final BookManagementService bookManagementService;
+	private final Logger log = LoggerFactory.getLogger(BooksManagementController.class);
 	
-	public BookManagementController(BookManagementService bookManagementService) {
+	private final BooksManagementService bookManagementService;
+	
+	public BooksManagementController(BooksManagementService bookManagementService) {
 		this.bookManagementService = bookManagementService;
 	}
 	
 	@PostMapping("/add")
-	public BookDTO saveBook(@RequestBody BookDTO bookDTO) {
+	public BooksDTO saveBook(@RequestBody BooksDTO bookDTO) {
+		log.info("Request to save the New Books : {}", bookDTO);
 		return bookManagementService.saveBook(bookDTO);
 	}
 	
 	@GetMapping("/all-books")
-	public List<BookDTO> bookAllLists(){
+	public List<BooksDTO> bookAllLists(){
+		log.info("Request to find the all Books");
 		return bookManagementService.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<BookDTO> findByBookId(@PathVariable("id") Long id){
+	public Optional<BooksDTO> findByBookId(@PathVariable("id") Long id){
+		log.info("Request to find the Books by id : {}", id);
 		return bookManagementService.findOne(id);
 	}
 	
 	@PutMapping("/update")
-	public Optional updateBook(@RequestBody BookDTO bookDTO) {
+	public Optional updateBook(@RequestBody BooksDTO bookDTO) {
+		log.info("Request to update the Books by id : {}", bookDTO);
 		return bookManagementService.partialUpdate(bookDTO);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteBook(@PathVariable("id") Long id) {
+		log.info("Request to delete the Books : {}", id);
 		bookManagementService.deleteBook(id);
 	}
 

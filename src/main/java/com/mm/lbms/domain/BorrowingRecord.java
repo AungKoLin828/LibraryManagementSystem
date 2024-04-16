@@ -1,21 +1,11 @@
-package com.mm.lbms.domain;
-
 /**************************
 *Author Name   : Aung Ko Lin
 *Creation Date : 2024-04-14
 **************************/
-
+package com.mm.lbms.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import com.mm.lbms.repository.PatronsRepo;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "borrowing_record_tbl")
@@ -28,42 +18,34 @@ public class BorrowingRecord implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equenceGenerator")
-	private Long Id;
+	private Long bwId;
 
 	@ManyToOne
-	private Book book;
+	@JoinColumn(name = "book_id")
+	private Books book;
 
 	@ManyToOne
-	private PatronsRepo patrons;
+	@JoinColumn(name = "patrons_id")
+	private Patrons patrons;
 
-	@NotNull
 	private LocalDate borrowDate;
 
-	@NotNull
 	private LocalDate returnDate;
 
-	public Long getId() {
-		return Id;
+	public Long getBwId() {
+		return bwId;
 	}
 
-	public void setId(Long id) {
-		Id = id;
+	public void setBwId(Long bwId) {
+		this.bwId = bwId;
 	}
 
-	public Book getBook() {
+	public Books getBook() {
 		return book;
 	}
 
-	public void setBook(Book book) {
+	public void setBook(Books book) {
 		this.book = book;
-	}
-
-	public PatronsRepo getPatrons() {
-		return patrons;
-	}
-
-	public void setPatrons(PatronsRepo patrons) {
-		this.patrons = patrons;
 	}
 
 	public LocalDate getBorrowDate() {
@@ -80,6 +62,18 @@ public class BorrowingRecord implements Serializable {
 
 	public void setReturnDate(LocalDate returnDate) {
 		this.returnDate = returnDate;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Patrons getPatrons() {
+		return patrons;
+	}
+
+	public void setPatrons(Patrons patrons) {
+		this.patrons = patrons;
 	}
 
 }

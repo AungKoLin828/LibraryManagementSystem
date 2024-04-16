@@ -7,31 +7,37 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.mm.lbms.domain.Book;
-import com.mm.lbms.dto.BookDTO;
-import com.mm.lbms.mapper.BookMapper;
-import com.mm.lbms.repository.BookRepo;
-import com.mm.lbms.services.BookManagementService;
+import com.mm.lbms.domain.Books;
+import com.mm.lbms.dto.BooksDTO;
+import com.mm.lbms.mapper.BooksMapper;
+import com.mm.lbms.repository.BooksRepository;
+import com.mm.lbms.services.BooksManagementService;
 
 @Service
-public class BookManagementServiceImpl implements BookManagementService{
+public class BookManagementServiceImpl implements BooksManagementService{
 	
-	private final BookMapper bookMapper;
+	private final Logger log = LoggerFactory.getLogger(BookManagementServiceImpl.class);
 	
-	private final BookRepo bookRepo;
+	private final BooksMapper bookMapper;
 	
-	public BookManagementServiceImpl(BookMapper bookMapper,BookRepo bookRepo) {
+	private final BooksRepository bookRepo;
+	
+	public BookManagementServiceImpl(BooksMapper bookMapper,BooksRepository bookRepo) {
 		this.bookMapper = bookMapper;
 		this.bookRepo = bookRepo;
 	}
 	
 	@Override
-	public BookDTO saveBook(BookDTO bookDto) {
+	public BooksDTO saveBook(BooksDTO bookDto) {
 		// TODO Auto-generated method stub
+		log.info("Request to save the New Books : {}", bookDto);
 		// Mapping DTO to entity
-		Book book =  bookMapper.toEntity(bookDto);
+		Books book =  bookMapper.toEntity(bookDto);
 		// Saving entity
 		book = bookRepo.save(book);
 		// Mapping saved entity back to DTO
@@ -39,8 +45,9 @@ public class BookManagementServiceImpl implements BookManagementService{
 	}
 
 	@Override
-	public List<BookDTO> findAll() {
+	public List<BooksDTO> findAll() {
 		// TODO Auto-generated method stub	
+		log.info("Request to find the all Books");
 		// Returning list of all books
 		  return bookRepo.findAll().stream().map(bookMapper::toDto)
 		  .collect(Collectors.toCollection(LinkedList::new));
@@ -48,20 +55,37 @@ public class BookManagementServiceImpl implements BookManagementService{
 	}
 
 	@Override
-	public Optional<BookDTO> findOne(Long id) {
+	public Optional<BooksDTO> findOne(Long id) {
 		// TODO Auto-generated method stub
+		log.info("Request to find the Books by id : {}", id);
 		// Returning book by id if found
 		return bookRepo.findById(id).map(bookMapper::toDto);
 	}
 
 	@Override
-	public Optional<BookDTO> partialUpdate(BookDTO bookDto) {
+	public Optional<BooksDTO> partialUpdate(BooksDTO bookDto) {
 		// TODO Auto-generated method stub
+		log.info("Request to update the Books by id : {}", bookDto);
 		// Partial update of book by id
-		return bookRepo.findById(bookDto.getId())
+		return bookRepo.findById(bookDto.getBookId())
 				.map(exctBook -> {
-					// Mapping DTO properties to existing entity
-					bookMapper.partialUpdate(exctBook, bookDto);
+					// Mapping DTO properties to existing entity					
+					if(bookDto.getAuthor() != null) {
+						exctBook.setAuthor(bookDto.getAuthor());
+					}
+					
+					if(bookDto.getIsbn() != null) {
+						exctBook.setIsbn(bookDto.getIsbn());
+					}
+					
+					if(bookDto.getTitle() != null) {
+						exctBook.setTitle(bookDto.getTitle());
+					}
+					
+					if(bookDto.getPublicationYear() != null) {
+						exctBook.setPublicationYear(bookDto.getPublicationYear());
+					}
+					bookMapper.partialUpdate(exctBook, bookDto);	
 					return exctBook;
 				}
 			)
@@ -73,6 +97,7 @@ public class BookManagementServiceImpl implements BookManagementService{
 	@Override
 	public void deleteBook(Long id) {
 		// TODO Auto-generated method stub
+		log.info("Request to delete the Books : {}", id);
 		bookRepo.deleteById(id);
 	}
 

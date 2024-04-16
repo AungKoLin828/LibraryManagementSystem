@@ -7,17 +7,17 @@ package com.mm.lbms.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.mm.lbms.dto.BookDTO;
+import com.mm.lbms.dto.BooksDTO;
 
-public interface BookManagementService {
+public interface BooksManagementService {
 	
-	BookDTO saveBook(BookDTO bookDto);
+	BooksDTO saveBook(BooksDTO bookDto);
 	
-	List<BookDTO> findAll();
+	List<BooksDTO> findAll();
 	
-	Optional<BookDTO> findOne(Long id);
+	Optional<BooksDTO> findOne(Long id);
 	
-	Optional<BookDTO> partialUpdate(BookDTO bookDto);
+	Optional<BooksDTO> partialUpdate(BooksDTO bookDto);
 	
 	void deleteBook(Long id);
 

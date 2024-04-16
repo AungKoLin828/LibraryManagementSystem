@@ -1,14 +1,14 @@
-package com.mm.lbms.repository;
 /**************************
 *Author Name   : Aung Ko Lin
-*Creation Date : 2024-04-14
+*Creation Date : 2024-04-15
 **************************/
+package com.mm.lbms.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mm.lbms.domain.Books;
+import com.mm.lbms.domain.BorrowingRecord;
 
 @Repository
-public interface BooksRepository extends JpaRepository<Books, Long> {
-
+public interface BorrowingRecordRepository extends JpaRepository<BorrowingRecord,Long>{
+	
 }

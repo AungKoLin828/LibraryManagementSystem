@@ -1,19 +1,20 @@
+/**************************
+*Author Name   : Aung Ko Lin
+*Creation Date : 2024-04-14
+**************************/
 package com.mm.lbms.domain;
-
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-
-import jakarta.validation.constraints.NotNull;
-
-import javax.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "book_tbl")
-public class Book implements Serializable {
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+public class Books implements Serializable {
 
 	/**
 	 * 
@@ -22,26 +23,26 @@ public class Book implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equenceGenerator")
-	private Long Id;
+	@Column(name ="book_id")
+	private Long bookId;
 
-	@NotNull
 	private String title;
 
-	@NotNull
 	private String author;
 
-	@NotNull
-	private int publicationYear;
+	private LocalDate publicationYear;
 
-	@NotNull
 	private String isbn;
-
-	public Long getId() {
-		return Id;
+	
+	@OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+	private List<BorrowingRecord> borrowingRecord;
+	
+	public Long getBookId() {
+		return bookId;
 	}
 
-	public void setId(Long id) {
-		Id = id;
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
 	}
 
 	public String getTitle() {
@@ -60,11 +61,11 @@ public class Book implements Serializable {
 		this.author = author;
 	}
 
-	public int getPublicationYear() {
+	public LocalDate getPublicationYear() {
 		return publicationYear;
 	}
 
-	public void setPublicationYear(int publicationYear) {
+	public void setPublicationYear(LocalDate publicationYear) {
 		this.publicationYear = publicationYear;
 	}
 
@@ -74,6 +75,18 @@ public class Book implements Serializable {
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public List<BorrowingRecord> getBorrowingRecord() {
+		return borrowingRecord;
+	}
+
+	public void setBorrowingRecord(List<BorrowingRecord> borrowingRecord) {
+		this.borrowingRecord = borrowingRecord;
 	}
 
 }
