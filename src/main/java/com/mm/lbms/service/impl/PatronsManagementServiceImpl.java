@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,13 +38,18 @@ public class PatronsManagementServiceImpl implements PatronsManagementService{
 	@Override
 	public PatronsDTO savePatrons(PatronsDTO patronsDto) {
 		// TODO Auto-generated method stub
-		log.info("Request to save the New Patrons : {}", patronsDto);
-		// Mapping DTO to entity
-		Patrons patrons = patronMapper.toEntity(patronsDto);
-		// Saving entity
-		patrons = patronsRepo.save(patrons);
-		// Mapping saved entity back to DTO
-		return patronMapper.toDto(patrons);
+		try {
+			log.info("Request to save the New Patrons : {}", patronsDto);
+			// Mapping DTO to entity
+			Patrons patrons = patronMapper.toEntity(patronsDto);
+			// Saving entity
+			patrons = patronsRepo.save(patrons);
+			// Mapping saved entity back to DTO
+			return patronMapper.toDto(patrons);
+		}catch(DataAccessException e) {
+			String errorMessage = "DataAccessException => " + e.getMessage();
+			throw new ServiceException(errorMessage);
+		}
 	}
 
 	@Override

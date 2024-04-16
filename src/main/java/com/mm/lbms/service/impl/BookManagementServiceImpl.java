@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,13 +39,18 @@ public class BookManagementServiceImpl implements BooksManagementService{
 	public BooksDTO saveBook(BooksDTO bookDto) {
 		// TODO Auto-generated method stub
 		log.info("Request to save the New Books : {}", bookDto);
-		// Mapping DTO to entity
-		Books book =  bookMapper.toEntity(bookDto);
-		// Saving entity
-		book.setBorrowed(false);
-		book = bookRepo.save(book);
-		// Mapping saved entity back to DTO
-		return bookMapper.toDto(book);
+		try {
+			// Mapping DTO to entity
+			Books book =  bookMapper.toEntity(bookDto);
+			// Saving entity
+			book.setBorrowed(false);
+			book = bookRepo.save(book);
+			// Mapping saved entity back to DTO
+			return bookMapper.toDto(book);
+		}catch(DataAccessException e) {
+			String errorMessage = "DataAccessException => " + e.getMessage();
+			throw new ServiceException(errorMessage);
+		}
 	}
 
 	@Override
