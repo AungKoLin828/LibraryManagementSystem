@@ -85,7 +85,7 @@ borrow a book.
 
 # Testing
 
-● Write unit tests to validate the functionality of API endpoints.
+● Unit tests to validate the functionality of API endpoints.
 
 ● Using testing frameworks like JUnit, Mockito, SpringBootTest for testing.
 
