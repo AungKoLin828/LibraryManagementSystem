@@ -1,5 +1,5 @@
 ----------------------------------------------------
-#Library Management System API using Spring Boot###
+#Library Management System API using Spring Boot
 ----------------------------------------------------
 
 ## Check out sources
