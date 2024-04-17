@@ -2,7 +2,7 @@
 *Author Name   : Aung Ko Lin
 *Creation Date : 2024-04-14
 **************************/
-package com.mm.lbms.service.impl;
+package com.mm.lbms.services.impl;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;

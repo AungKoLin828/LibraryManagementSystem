@@ -5,9 +5,10 @@
 package com.mm.lbms.controller;
 import java.util.List;
 import java.util.Optional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,9 +36,22 @@ public class PatronsManagementController {
 	}
 	
 	@PostMapping("/add")
-	public PatronsDTO savePatrons(@RequestBody PatronsDTO patronsDTO) {
+	public ResponseEntity<?> savePatrons(@RequestBody PatronsDTO patronsDTO) {
 		log.info("Request to save the New Patrons : {}", patronsDTO);
-		return patronsManagementService.savePatrons(patronsDTO);
+		if (!isValidEmail(patronsDTO.getEmail())) {
+			String errorMessage = "Invalid email format";
+			log.info(errorMessage, patronsDTO);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+        }
+		
+		PatronsDTO ptronsDto = patronsManagementService.savePatrons(patronsDTO);
+		
+		if(ptronsDto == null) {
+			String errorMessage = "Invalid Request";
+			log.info(errorMessage, patronsDTO);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+		}
+		return ResponseEntity.ok(ptronsDto);
 	}
 	
 	@GetMapping("/all-patrons")
@@ -71,5 +85,11 @@ public class PatronsManagementController {
 		
 		patronsManagementService.deletePatrons(id);
 	}
+	
+	private boolean isValidEmail(String email) {
+        // Regular expression for email validation
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(regex);
+    }
 
 }

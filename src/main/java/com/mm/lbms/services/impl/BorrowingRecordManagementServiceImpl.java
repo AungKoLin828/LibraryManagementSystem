@@ -2,7 +2,7 @@
 *Author Name   : Aung Ko Lin
 *Creation Date : 2024-04-15
 **************************/
-package com.mm.lbms.service.impl;
+package com.mm.lbms.services.impl;
 
 import java.time.LocalDate;
 import java.util.Optional;
