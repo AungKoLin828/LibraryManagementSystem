@@ -15,7 +15,7 @@ mvn install
 
 1.Create "library" login role with passowrd is "library"
 
-2.Create "library_db" database and scheme with owner "library"
+2.Create "library_db" database and schema with owner "library"
 
 3.Run Script  [create_sql.sql] file from following 
 
