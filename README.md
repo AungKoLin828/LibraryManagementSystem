@@ -19,7 +19,7 @@ mvn install
 
 3.Run Script  [create_sql.sql] file from following 
 
-  https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources
+  https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/postgresql
 
 -----------------------------------------------------------------------------------------
 # Project Description
