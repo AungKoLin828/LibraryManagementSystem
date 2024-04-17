@@ -66,7 +66,7 @@ public class BorrowingRecordManagementServiceImpl implements BorrowingRecordMana
 		log.info("Request to borrow the Books : {}", bookId);
 		BorrowingRecordDTO borrow = new BorrowingRecordDTO();
 		BooksDTO bookDto =  bookRepo.findById(bookId).map(bookMapper::toDto).orElse(null);
-		PatronsDTO patronsDto = patronsRepo.findById(bookId).map(patronMapper::toDto).orElse(null);
+		PatronsDTO patronsDto = patronsRepo.findById(patronsId).map(patronMapper::toDto).orElse(null);
 		//Check available books and save the records
 		try {
 			
@@ -101,7 +101,7 @@ public class BorrowingRecordManagementServiceImpl implements BorrowingRecordMana
 		log.info("Request to return the Books : {}", bookId);
 		BorrowingRecordDTO borrowDTO = new BorrowingRecordDTO();
 		BooksDTO bookDto =  bookRepo.findById(bookId).map(bookMapper::toDto).orElse(null);
-		PatronsDTO patronsDto = patronsRepo.findById(bookId).map(patronMapper::toDto).orElse(null);
+		PatronsDTO patronsDto = patronsRepo.findById(patronsId).map(patronMapper::toDto).orElse(null);
 		
 		try {
 			
