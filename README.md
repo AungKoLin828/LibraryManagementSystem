@@ -6,7 +6,7 @@
 
 git clone https://github.com/AungKoLin828/LibraryManagementSystem.git
 
-#Install all spring-\* jars into your local Maven cache
+# Install all spring-\* jars into your local Maven cache
 
 mvn install
 
@@ -22,7 +22,7 @@ mvn install
   https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/postgresql.sql
 
 -----------------------------------------------------------------------------------------
-#Project Description
+# Project Description
 
 Building a Library Management System API using Spring Boot. The system allow librarians
 to manage books, patrons, and borrowing records.
@@ -55,13 +55,19 @@ to manage books, patrons, and borrowing records.
 # Patron management endpoints:
 
 ● GET /api/patrons: Retrieve a list of all patrons.
+
 ● GET /api/patrons/{id}: Retrieve details of a specific patron by ID.
+
 ● POST /api/patrons: Add a new patron to the system.
+
 ● PUT /api/patrons/{id}: Update an existing patron's information.
+
 ● DELETE /api/patrons/{id}: Remove a patron from the system.
-● Borrowing endpoints:
+
+# Borrowing endpoints:
 ● POST /api/borrow/{bookId}/patron/{patronId}: Allow a patron to
 borrow a book.
+
 ● PUT /api/return/{bookId}/patron/{patronId}: Record the return of a borrowed book by a patron.
 
 # Data Storage
@@ -70,6 +76,7 @@ borrow a book.
 
 # Validation and Error Handling:
 ● Implement input validation for API requests (e.g., validating required fields, data formats, etc.).
+
 ● Handle exceptions gracefully and return appropriate HTTP status codes and error messages.
 
 # Transaction Management
@@ -79,6 +86,7 @@ borrow a book.
 # Testing
 
 ● Write unit tests to validate the functionality of API endpoints.
+
 ● Using testing frameworks like JUnit, Mockito, SpringBootTest for testing.
 
 # ERD
