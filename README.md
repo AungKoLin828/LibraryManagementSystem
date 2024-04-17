@@ -38,7 +38,7 @@ to manage books, patrons, and borrowing records.
   
 # API Endpoints
 
-● Implement RESTful endpoints to handle the following operations:
+## Implement RESTful endpoints to handle the following operations:
 
 # Book management endpoints:
 
