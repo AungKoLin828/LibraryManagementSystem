@@ -1,17 +1,17 @@
 ----------------------------------------------------
-##Library Management System API using Spring Boot###
+#Library Management System API using Spring Boot###
 ----------------------------------------------------
 
-# Check out sources
+## Check out sources
 
 git clone https://github.com/AungKoLin828/LibraryManagementSystem.git
 
-# Install all spring-\* jars into your local Maven cache
+## Install all spring-\* jars into your local Maven cache
 
 mvn install
 
 -------------------------------------------------------------------------------------
-# PostgresSQL Database Setup
+## PostgresSQL Database Setup
 
 1.Create "library" login role with passowrd is "library"
 
@@ -22,12 +22,12 @@ mvn install
   https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/postgresql
 
 -----------------------------------------------------------------------------------------
-# Project Description
+## Project Description
 
 Building a Library Management System API using Spring Boot. The system allow librarians
 to manage books, patrons, and borrowing records.
 
-# Entities Class
+## Entities Class
 
 ● Book: Includes attributes like ID, title, author, publication year, ISBN, etc.
 
@@ -36,11 +36,11 @@ to manage books, patrons, and borrowing records.
 ● Borrowing Record: Tracks the association between books and patrons,
   including borrowing and return dates.
   
-# API Endpoints
+## API Endpoints
 
 ## Implement RESTful endpoints to handle the following operations:
 
-# Book management endpoints:
+### Book management endpoints:
 
 ● GET /api/books/all-books: Retrieve a list of all books.
 
@@ -52,7 +52,7 @@ to manage books, patrons, and borrowing records.
 
 ● DELETE /api/books/{id}: Remove a book from the library.
 
-# Patron management endpoints:
+### Patron management endpoints:
 
 ● GET /api/patrons/all-patrons: Retrieve a list of all patrons.
 
@@ -64,32 +64,32 @@ to manage books, patrons, and borrowing records.
 
 ● DELETE /api/patrons/{id}: Remove a patron from the system.
 
-# Borrowing endpoints:
+### Borrowing endpoints:
 ● POST /api/borrow/{bookId}/patron/{patronId}: Allow a patron to
 borrow a book.
 
 ● PUT /api/return/{bookId}/patron/{patronId}: Record the return of a borrowed book by a patron.
 
-# Data Storage
+### Data Storage
 
 ● PostgreSQL
 
-# Validation and Error Handling:
+### Validation and Error Handling:
 ● Implement input validation for API requests (e.g., validating required fields, data formats, etc.).
 
 ● Handle exceptions gracefully and return appropriate HTTP status codes and error messages.
 
-# Transaction Management
+### Transaction Management
 
 ● Implement declarative transaction management using Spring's @Transactional annotation to ensure data integrity during critical operations.
 
-# Testing
+### Testing
 
 ● Unit tests to validate the functionality of API endpoints.
 
 ● Using testing frameworks like JUnit, Mockito, SpringBootTest for testing.
 
-# ERD
+### ERD
 ![ERD](https://github.com/AungKoLin828/LibraryManagementSystem/assets/61590535/bbe2e825-d851-410c-99eb-4a5b07473803)
 
 
