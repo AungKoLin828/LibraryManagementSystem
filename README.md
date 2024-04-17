@@ -42,25 +42,25 @@ to manage books, patrons, and borrowing records.
 
 # Book management endpoints:
 
-● GET /api/books: Retrieve a list of all books.
+● GET /api/books/all-books: Retrieve a list of all books.
 
 ● GET /api/books/{id}: Retrieve details of a specific book by ID.
 
-● POST /api/books: Add a new book to the library.
+● POST /api/books/add: Add a new book to the library.
 
-● PUT /api/books/{id}: Update an existing book's information.
+● PUT /api/books/update: Update an existing book's information.
 
 ● DELETE /api/books/{id}: Remove a book from the library.
 
 # Patron management endpoints:
 
-● GET /api/patrons: Retrieve a list of all patrons.
+● GET /api/patrons/all-patrons: Retrieve a list of all patrons.
 
 ● GET /api/patrons/{id}: Retrieve details of a specific patron by ID.
 
-● POST /api/patrons: Add a new patron to the system.
+● POST /api/patrons/add: Add a new patron to the system.
 
-● PUT /api/patrons/{id}: Update an existing patron's information.
+● PUT /api/patrons/update: Update an existing patron's information.
 
 ● DELETE /api/patrons/{id}: Remove a patron from the system.
 
