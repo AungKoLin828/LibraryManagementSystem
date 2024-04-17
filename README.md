@@ -21,6 +21,12 @@ mvn install
 
   https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/postgresql
 
+## Developer Guide
+
+Developer Guide.xlsx
+
+https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/documents
+
 -----------------------------------------------------------------------------------------
 ## Project Description
 
