@@ -3,13 +3,16 @@
 ----------------------------------------------------
 
 #Check out sources
+
 git clone https://github.com/AungKoLin828/LibraryManagementSystem.git
 
 #Install all spring-\* jars into your local Maven cache
+
 mvn install
 
 -------------------------------------------------------------------------------------
 #PostgresSQL Database Setup
+
 1.Create "library" login role with passowrd is "library"
 2.Create "library_db" database and scheme with owner "library"
 3.Run Script  [create_sql.sql] file from following 
@@ -24,17 +27,24 @@ to manage books, patrons, and borrowing records.
 #Entities Class
 
 ● Book: Includes attributes like ID, title, author, publication year, ISBN, etc.
+
 ● Patron: Contains details like ID, name, contact information, etc.
+
 ● Borrowing Record: Tracks the association between books and patrons,
   including borrowing and return dates.
   
 #API Endpoints
 
 ● Implement RESTful endpoints to handle the following operations:
+
 ● Book management endpoints:
+
 ● GET /api/books: Retrieve a list of all books.
+
 ● GET /api/books/{id}: Retrieve details of a specific book by ID.
+
 ● POST /api/books: Add a new book to the library.
+
 ● PUT /api/books/{id}: Update an existing book's information.
 ● DELETE /api/books/{id}: Remove a book from the library.
 ● Patron management endpoints:
