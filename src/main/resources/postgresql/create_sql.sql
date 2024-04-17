@@ -1,41 +1,6 @@
--- Database: library_db
--- Role: library
--- DROP ROLE IF EXISTS library;
-
-CREATE ROLE library WITH
-  LOGIN
-  SUPERUSER
-  INHERIT
-  CREATEDB
-  CREATEROLE
-  REPLICATION
-  ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:5bLiyEZPsxC9hOn4LCI84g==$fM2xSNZ/mGAjcYztta88Fm4Uye7ymxuAiuXiL0ux4iM=:PUbPxIbhlCT85Vs9aut1hOUQNJbWnwSGDwBjWaM0rS8=';
-
-
-DROP DATABASE IF EXISTS library_db;
-
-CREATE DATABASE library_db
-    WITH
-    OWNER = library
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'English_United States.1252'
-    LC_CTYPE = 'English_United States.1252'
-    LOCALE_PROVIDER = 'libc'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
-	
--- SCHEMA: library_db
-
--- DROP SCHEMA IF EXISTS library_db ;
-
-CREATE SCHEMA IF NOT EXISTS library_db
-    AUTHORIZATION library;
-	
-
 -- Table: library_db.book_tbl
 
--- DROP TABLE IF EXISTS library_db.book_tbl;
+DROP TABLE IF EXISTS library_db.book_tbl cascade;
 
 CREATE TABLE IF NOT EXISTS library_db.book_tbl
 (
@@ -48,9 +13,11 @@ CREATE TABLE IF NOT EXISTS library_db.book_tbl
     CONSTRAINT book_tbl_pkey PRIMARY KEY (book_id)
 )
 
+TABLESPACE pg_default;
+
 -- Table: library_db.partrons_tbl
 
--- DROP TABLE IF EXISTS library_db.partrons_tbl;
+DROP TABLE IF EXISTS library_db.partrons_tbl cascade;
 
 CREATE TABLE IF NOT EXISTS library_db.partrons_tbl
 (
@@ -67,10 +34,9 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS library_db.partrons_tbl
     OWNER to library;
 	
-
 -- Table: library_db.borrowing_record_tbl
 
--- DROP TABLE IF EXISTS library_db.borrowing_record_tbl;
+DROP TABLE IF EXISTS library_db.borrowing_record_tbl cascade;
 
 CREATE TABLE IF NOT EXISTS library_db.borrowing_record_tbl
 (
