@@ -3,13 +3,13 @@
 ----------------------------------------------------
 
 ## Check out sources
-
+```bash
 git clone https://github.com/AungKoLin828/LibraryManagementSystem.git
-
+```
 ## Install all spring-\* jars into your local Maven cache
-
+```bash
 mvn install
-
+```
 -------------------------------------------------------------------------------------
 ## PostgresSQL Database Setup
 
@@ -18,14 +18,15 @@ mvn install
 2.Create "library_db" database and schema with owner "library"
 
 3.Run Script  [create_sql.sql] file from following 
-
+```bash
   https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/postgresql
-
+```
 ## Developer Guide
 
 Developer Guide.xlsx
-
+```bash
 https://github.com/AungKoLin828/LibraryManagementSystem/tree/main/src/main/resources/documents
+```
 
 -----------------------------------------------------------------------------------------
 ## Project Description
